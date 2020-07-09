@@ -1,0 +1,27 @@
+@import '../styles/utils.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  .TodoTemplate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 500px;
+    margin: 0 auto;
+
+    .title {
+      color: $gray;
+      margin-bottom: 24px;
+      &::after {
+        content: '';
+        display: block;
+        background: $gray;
+        width: 100%;
+        height: 2px;
+      }
+    }
+  }
+}
