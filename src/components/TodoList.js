@@ -18,7 +18,11 @@ const TodoList = ({ todos, onRemove, allRemove, selectRemove }) => {
             <th>Delete</th>
           </tr>
         </thead>
-        <tbody></tbody>
+        <tbody>
+          {todos.map((todo) => (
+            <TodoListItem todo={todo} key={todo.id} onRemove={onRemove} />
+          ))}
+        </tbody>
       </table>
       <div className="button-box">
         <button onClick={selectRemove}>선택 삭제</button>
