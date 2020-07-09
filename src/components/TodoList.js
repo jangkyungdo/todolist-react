@@ -1,7 +1,8 @@
-import React from 'react';
-import './TodoList.scss';
+import React from "react";
+import "./TodoList.scss";
+import TodoListItem from "./TodoListItem";
 
-const TodoList = () => {
+const TodoList = ({ todos, onRemove, allRemove, selectRemove }) => {
   return (
     <>
       <table className="TodoList">
@@ -17,17 +18,11 @@ const TodoList = () => {
             <th>Delete</th>
           </tr>
         </thead>
-        <tbody>
-          {/* <tr>
-            <td>asd</td>
-            <td>asd</td>
-            <td>asd</td>
-          </tr> */}
-        </tbody>
+        <tbody></tbody>
       </table>
       <div className="button-box">
-        <button>선택 삭제</button>
-        <button>전체 삭제</button>
+        <button onClick={selectRemove}>선택 삭제</button>
+        <button onClick={allRemove}>전체 삭제</button>
       </div>
     </>
   );
