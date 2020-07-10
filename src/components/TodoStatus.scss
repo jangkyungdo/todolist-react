@@ -1,0 +1,13 @@
+@import '../styles/utils.scss';
+
+.TodoStatus {
+  display: flex;
+  justify-content: space-between;
+  background: $darkgreen;
+  padding: 8px;
+  margin-bottom: 16px;
+
+  div {
+    color: $white;
+  }
+}

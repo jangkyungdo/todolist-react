@@ -1,8 +1,8 @@
-import React, { useState, useCallback } from "react";
-import "./TodoInsert.scss";
+import React, { useState, useCallback } from 'react';
+import './TodoInsert.scss';
 
 const TodoInsert = ({ onInsert }) => {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
 
   const onChange = useCallback((e) => {
     setValue(e.target.value);
@@ -11,7 +11,7 @@ const TodoInsert = ({ onInsert }) => {
   const onSubmit = useCallback(
     (e) => {
       onInsert(value);
-      setValue("");
+      setValue('');
       e.preventDefault();
     },
     [onInsert, value]

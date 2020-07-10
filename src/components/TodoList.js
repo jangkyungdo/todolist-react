@@ -3,7 +3,6 @@ import './TodoList.scss';
 import TodoListItem from './TodoListItem';
 
 const TodoList = ({ todos, onRemove, allRemove, selectRemove, onToggle }) => {
-  // const { checked } = todos;
   return (
     <>
       <table className="TodoList">
