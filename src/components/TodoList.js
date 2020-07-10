@@ -1,8 +1,9 @@
-import React from "react";
-import "./TodoList.scss";
-import TodoListItem from "./TodoListItem";
+import React from 'react';
+import './TodoList.scss';
+import TodoListItem from './TodoListItem';
 
-const TodoList = ({ todos, onRemove, allRemove, selectRemove }) => {
+const TodoList = ({ todos, onRemove, allRemove, selectRemove, onToggle }) => {
+  // const { checked } = todos;
   return (
     <>
       <table className="TodoList">
@@ -20,7 +21,12 @@ const TodoList = ({ todos, onRemove, allRemove, selectRemove }) => {
         </thead>
         <tbody>
           {todos.map((todo) => (
-            <TodoListItem todo={todo} key={todo.id} onRemove={onRemove} />
+            <TodoListItem
+              todo={todo}
+              key={todo.id}
+              onRemove={onRemove}
+              onToggle={onToggle}
+            />
           ))}
         </tbody>
       </table>

@@ -1,8 +1,8 @@
-import React, { useState, useCallback, useRef } from "react";
-import "./App.css";
-import TodoTemplate from "./components/TodoTemplate";
-import TodoInsert from "./components/TodoInsert";
-import TodoList from "./components/TodoList";
+import React, { useState, useCallback, useRef } from 'react';
+import './App.css';
+import TodoTemplate from './components/TodoTemplate';
+import TodoInsert from './components/TodoInsert';
+import TodoList from './components/TodoList';
 
 const App = () => {
   const [todos, setTodos] = useState([]);
@@ -14,6 +14,7 @@ const App = () => {
       const nextTodos = {
         id: nextId.current,
         text,
+        checked: true,
       };
       setTodos(todos.concat(nextTodos));
       nextId.current += 1;
@@ -32,9 +33,21 @@ const App = () => {
     setTodos([]);
   }, []);
 
+  const onToggle = useCallback(
+    (id) => {
+      setTodos(
+        todos.map((todo) =>
+          todo.id === id ? { ...todo, checked: !todo.checked } : todo
+        )
+      );
+      console.log(todos);
+    },
+    [todos]
+  );
+
   const selectRemove = useCallback(() => {
-    setTodos(todos.filter((todo) => !todo.checked));
-  }, []);
+    setTodos(todos.filter((todo) => todo.checked));
+  }, [todos]);
 
   return (
     <TodoTemplate>
@@ -44,6 +57,7 @@ const App = () => {
         onRemove={onRemove}
         allRemove={allRemove}
         selectRemove={selectRemove}
+        onToggle={onToggle}
       />
     </TodoTemplate>
   );
