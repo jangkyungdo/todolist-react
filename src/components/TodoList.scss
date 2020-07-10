@@ -1,4 +1,4 @@
-@import "../styles/utils.scss";
+@import '../styles/utils.scss';
 
 .TodoList {
   border-collapse: collapse;
@@ -9,13 +9,14 @@
     background: $darkgreen;
     color: $white;
     padding: 10px 20px;
-    border: 1px solid black;
+    border: 1px solid $white;
     text-align: center;
+    font-size: 20px;
   }
 
   td {
     background: none;
-    color: $gray;
+    color: $white;
   }
 }
 .button-box {
@@ -25,10 +26,10 @@
   button {
     background: $lightgreen;
     outline: none;
-    border: 1px solid $white;
+    border: 1px solid $lightgreen;
     border-radius: 4px;
     padding: 8px;
-    font-size: 16px;
+    font-size: 18px;
     color: $white;
     cursor: pointer;
   }

@@ -2,10 +2,11 @@
 
 .TodoStatus {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   background: $darkgreen;
   padding: 8px;
   margin-bottom: 16px;
+  font-size: 20px;
 
   div {
     color: $white;

@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useState, useCallback, useRef, useEffect } from 'react';
 import './App.css';
 import TodoTemplate from './components/TodoTemplate';
 import TodoInsert from './components/TodoInsert';
@@ -10,6 +10,9 @@ const App = () => {
 
   const nextId = useRef(1);
 
+  // const test = useEffect(() => {
+  //   localStorage.getItem()
+  // },[])
   const onInsert = useCallback(
     (text) => {
       const nextTodos = {
@@ -53,7 +56,7 @@ const App = () => {
 
   return (
     <TodoTemplate>
-      <TodoInsert onInsert={onInsert} />
+      <TodoInsert onInsert={onInsert} onToggle={onToggle} todos={todos} />
       <TodoStatus todos={todos} />
       <TodoList
         todos={todos}
