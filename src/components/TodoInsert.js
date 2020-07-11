@@ -1,9 +1,8 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import './TodoInsert.scss';
-import cn from 'classnames';
 
 const TodoInsert = ({ onInsert, onToggle, todos }) => {
-  const { id, checked } = todos;
+  const { id } = todos;
   const [value, setValue] = useState('');
   const [name, setName] = useState('');
   const USER_LOCALSTORAGE = 'userName';
@@ -50,7 +49,7 @@ const TodoInsert = ({ onInsert, onToggle, todos }) => {
           onChange={onChangeName}
           placeholder="이름을 입력해주세요."
         ></input>
-        <h2>{checked ? currentUser : ''}</h2>
+        <h2>{currentUser}</h2>
         <button type="submit">변경</button>
       </form>
       <form className="TodoInsert" onSubmit={onSubmit}>
