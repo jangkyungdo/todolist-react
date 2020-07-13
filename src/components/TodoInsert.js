@@ -3,40 +3,46 @@ import './TodoInsert.scss';
 
 const TodoInsert = ({ onInsert, onToggle, todos }) => {
   const { id } = todos;
-  const [value, setValue] = useState('');
-  const [name, setName] = useState('');
+  const [form, setForm] = useState({ name: '', todo: '' });
   const USER_LOCALSTORAGE = 'userName';
   const currentUser = localStorage.getItem(USER_LOCALSTORAGE);
 
-  // const currentUser = useEffect(() => {
-  //   localStorage.getItem(USER_LOCALSTORAGE);
-  // }, [name]);
-
-  const onChange = useCallback((e) => {
-    setValue(e.target.value);
-  }, []);
+  const onChange = useCallback(
+    (e) => {
+      const { name, value } = e.target;
+      setForm({
+        ...form,
+        [name]: [value],
+      });
+    },
+    [form]
+  );
 
   const onSubmit = useCallback(
     (e) => {
-      onInsert(value);
-      setValue('');
+      onInsert(form.todo);
+      // setValue('');
+      setForm({
+        ...form,
+        todo: '',
+      });
       e.preventDefault();
     },
-    [value]
+    [form]
   );
-
-  const onChangeName = useCallback((e) => {
-    setName(e.target.value);
-  }, []);
 
   const onSubmitName = useCallback(
     (e) => {
       e.preventDefault();
-      localStorage.setItem(USER_LOCALSTORAGE, name);
-      setName('');
+      localStorage.setItem(USER_LOCALSTORAGE, form.name);
+      // setName('');
+      setForm({
+        ...form,
+        name: '',
+      });
       onToggle(id);
     },
-    [name]
+    [form]
   );
 
   return (
@@ -44,9 +50,10 @@ const TodoInsert = ({ onInsert, onToggle, todos }) => {
       <form className="TodoInsert" onSubmit={onSubmitName}>
         <input
           className="TodoInsert__name"
+          name="name"
           type="text"
-          value={name}
-          onChange={onChangeName}
+          value={form.name}
+          onChange={onChange}
           placeholder="이름을 입력해주세요."
         ></input>
         <h2>{currentUser}</h2>
@@ -55,7 +62,8 @@ const TodoInsert = ({ onInsert, onToggle, todos }) => {
       <form className="TodoInsert" onSubmit={onSubmit}>
         <input
           type="text"
-          value={value}
+          name="todo"
+          value={form.todo}
           onChange={onChange}
           placeholder="할 일을 입력해주세요."
         ></input>
